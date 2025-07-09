@@ -27,6 +27,7 @@
               }
             ],
             "styles": [
+              "node_modules/primeicons/primeicons.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -118,5 +119,8 @@
     "@schematics/angular:resolver": {
       "typeSeparator": "."
     }
+  },
+  "cli": {
+    "analytics": "3d924009-a1d5-4a7a-b7c6-1524f750e7bc"
   }
 }
