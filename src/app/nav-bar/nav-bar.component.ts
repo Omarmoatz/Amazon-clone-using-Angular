@@ -1,36 +1,58 @@
-import { Component } from '@angular/core';
-import { AppComponent } from '../app.component';
-import { MenubarModule } from 'primeng/menubar';
-import { ButtonModule } from 'primeng/button';
+import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-
+import { BadgeModule } from 'primeng/badge';
+import { AvatarModule } from 'primeng/avatar';
+import { InputTextModule } from 'primeng/inputtext';
+import { CommonModule } from '@angular/common';
+import { Ripple } from 'primeng/ripple';
+import { Menubar, MenubarModule } from 'primeng/menubar';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [
-    MenubarModule,
-    ButtonModule,
-  ],
   templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.css'
+  styleUrl: './nav-bar.component.css',
+  standalone: true,
+  imports: [Menubar, BadgeModule, AvatarModule, InputTextModule, Ripple, CommonModule]
 })
-export class NavBarComponent {
+export class NavBarComponent implements OnInit {
+    items: MenuItem[] | undefined;
 
-     items: MenuItem[] = [
-    {
-      label: 'Home',
-      icon: 'pi pi-home',
-      routerLink: '/',
-    },
-    {
-      label: 'Products',
-      icon: 'pi pi-shopping-cart',
-      routerLink: '/products',
-    },
-    {
-      label: 'Contact',
-      icon: 'pi pi-envelope',
-      routerLink: '/contact',
-    },
-  ];
+    ngOnInit() {
+        this.items = [
+            {
+                label: 'Home',
+                icon: 'pi pi-home',
+            },
+            {
+                label: 'any',
+                icon: 'pi pi-home',
+            },
+            {
+                label: 'Projects',
+                icon: 'pi pi-search',
+                badge: '3',
+                items: [
+                    {
+                        label: 'Core',
+                        icon: 'pi pi-bolt',
+                        shortcut: '⌘+S',
+                    },
+                    {
+                        label: 'Blocks',
+                        icon: 'pi pi-server',
+                        shortcut: '⌘+B',
+                    },
+                    {
+                        separator: true,
+                    },
+                    {
+                        label: 'UI Kit',
+                        icon: 'pi pi-pencil',
+                        shortcut: '⌘+U',
+                    },
+                ],
+            },
+        ];
+    }
 }
